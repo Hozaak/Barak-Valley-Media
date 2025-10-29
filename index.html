@@ -10,7 +10,7 @@
         :root {
             --primary: #FF5722;
             --secondary: #4CAF50;
-            --accent: #FFC107;
+            --accent: #FFC107; /* This is our 'golden' color */
             --dark: #212121;
             --light: #f5f5f5;
             --assam-red: #D32F2F;
@@ -60,7 +60,7 @@
             justify-content: space-between; 
             align-items: center; 
             padding: 15px 0; 
-            position: relative; /* Needed for mobile menu positioning */
+            position: relative;
         }
         .logo { display: flex; align-items: center; }
         
@@ -92,9 +92,9 @@
         }
         nav ul li a:hover { color: var(--accent); background: rgba(255, 255, 255, 0.1); }
 
-        /* ===== NEW HAMBURGER STYLES ===== */
+        /* Hamburger Styles */
         .nav-toggle {
-            display: none; /* Hidden on desktop */
+            display: none; 
             background: none;
             border: none;
             cursor: pointer;
@@ -109,16 +109,9 @@
             background-color: var(--light);
             transition: all 0.3s ease-in-out;
         }
-        /* 'X' Animation */
-        .nav-toggle.active .bar:nth-child(2) {
-            opacity: 0;
-        }
-        .nav-toggle.active .bar:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-        .nav-toggle.active .bar:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
+        .nav-toggle.active .bar:nth-child(2) { opacity: 0; }
+        .nav-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .nav-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
         
         .btn { padding: 10px 20px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; border: none; font-size: 1rem; }
@@ -328,19 +321,43 @@
         .members-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .member-card {
             background: rgba(255, 255, 255, 0.08); border-radius: 15px; overflow: hidden;
-            transition: all 0.3s ease; opacity: 0; animation: fadeInUp 0.5s ease-out forwards;
+            transition: all 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0; animation: fadeInUp 0.5s ease-out forwards;
         }
         .members-grid .member-card:nth-child(1) { animation-delay: 0.2s; }
         .members-grid .member-card:nth-child(2) { animation-delay: 0.3s; }
-        .members-grid .member-card:nth-child(3) { animation-delay: 0.4s; }
-        .member-card:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); }
+        
+        .member-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 193, 7, 0.3);
+        }
+        
         .member-header { padding: 20px; text-align: center; background: rgba(255, 255, 255, 0.1); }
-        .member-img { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 15px; background-size: cover; background-position: center; border: 3px solid var(--accent); }
+        
+        /* ===== UPDATED .member-img CSS ===== */
+        .member-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;  /* This makes it circular */
+            margin: 0 auto 15px;
+            object-fit: cover;  /* This makes the image cover the space, just like background-size: cover */
+            border: 3px solid var(--accent);
+            display: block; /* Helps with margin: auto */
+        }
+
         .member-card h3 { font-size: 1.4rem; margin-bottom: 5px; }
         .member-card .role { color: var(--accent); font-weight: 600; }
         .member-details { padding: 20px; }
         .member-details p { margin-bottom: 15px; color: #bdbdbd; }
-        
+
+        /* Golden Member Grid Styles */
+        .members-grid-golden {
+            grid-template-columns: 1fr; 
+            max-width: 900px; 
+            margin: 0 auto; 
+        }
+
+
         /* Footer */
         footer { background: rgba(0, 0, 0, 0.9); padding: 60px 0 30px; }
         .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
@@ -426,12 +443,8 @@
             box-shadow: 0 5px 15px rgba(255, 87, 34, 0.3);
         }
 
-        /* =================================== */
-        /* ===== UPDATED RESPONSIVE STYLES ===== */
-        /* =================================== */
-
+        /* Responsive Styles */
         @media (max-width: 768px) {
-            /* Keep header as a row, but show hamburger */
             .header-container { 
                 flex-direction: row; 
                 padding: 10px 0; 
@@ -440,20 +453,19 @@
                 display: block;
             }
 
-            /* Style the Nav for mobile dropdown */
             nav {
-                display: none; /* Hide by default */
+                display: none; 
                 position: absolute;
-                top: 100%; /* Position below header */
+                top: 100%; 
                 left: 0;
                 width: 100%;
-                background: rgba(33, 33, 33, 0.97); /* Darker for clarity */
+                background: rgba(33, 33, 33, 0.97); 
                 backdrop-filter: blur(10px);
                 padding: 15px 0;
                 box-shadow: 0 10px 20px rgba(0,0,0,0.3);
             }
             nav.active {
-                display: flex; /* Show when active */
+                display: flex; 
                 animation: fadeInUp 0.3s ease;
             }
             nav ul { 
@@ -478,7 +490,6 @@
                 background: var(--accent);
             }
 
-            /* Other mobile styles */
             .logo h1 { font-size: 1.8rem; }
             section { padding: 60px 0; }
             .hero { padding: 120px 0 80px; }
@@ -519,7 +530,14 @@
             .modal-gallery-grid img { height: 100px; }
         }
 
-        /* Styles for Small Phones */
+        /* Golden Member Grid @ 768px+ */
+        @media (min-width: 768px) {
+            .members-grid-golden {
+                grid-template-columns: 1fr 1fr; 
+            }
+        }
+
+
         @media (max-width: 480px) {
             body { font-size: 14px; }
             .logo h1 { font-size: 1.6rem; }
@@ -536,8 +554,7 @@
 
             .events-grid, 
             .singers-grid, 
-            .memories-grid, 
-            .members-grid { 
+            .memories-grid { 
                 grid-template-columns: 1fr; 
             }
 
@@ -565,7 +582,8 @@
                 <h1>Hoz<span>aak</span></h1>
                 <i class="fas fa-music logo-icon"></i>
             </div>
-            <nav id="nav-menu"> <ul>
+            <nav id="nav-menu">
+                <ul>
                     <li><a href="#events">Events</a></li>
                     <li><a href="#singers">Singers</a></li>
                     <li><a href="#music">Music</a></li>
@@ -606,7 +624,7 @@
                 </div>
                 <div class="event-card sold-out">
                     <div class="sold-out-tag">SOLD OUT</div>
-                    <div class="event-img" style="background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="event-img" style="background-image: url('https::/images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="event-content">
                         <div class="event-date"><i class="far fa-calendar-alt"></i> November 20, 2025</div>
                         <h3>Folk Fusion Night</h3>
@@ -615,7 +633,7 @@
                     </div>
                 </div>
                 <div class="event-card">
-                    <div class="event-img" style="background-image: url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="event-img" style="background-image: url('https::/images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
                     <div class="event-content">
                         <div class="event-date"><i class="far fa-calendar-alt"></i> January 15, 2026</div>
                         <h3>New Artist Showcase</h3>
@@ -644,7 +662,7 @@
                     </div>
                 </div>
                 <div class="singer-card">
-                    <div class="singer-img" style="background-image: url('https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="singer-img" style="background-image: url('https::/images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
                     <h3>Kalpana Patowary</h3>
                     <p>Folk & Playback Singer</p>
                     <div class="social-links">
@@ -654,7 +672,7 @@
                     </div>
                 </div>
                 <div class="singer-card">
-                    <div class="singer-img" style="background-image: url('https://images.unsplash.com/photo-1494790108755-2616c113a1c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="singer-img" style="background-image: url('https::/images.unsplash.com/photo-1494790108755-2616c113a1c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
                     <h3>Bhupen Uzir</h3>
                     <p>Folk Singer</p>
                     <div class="social-links">
@@ -664,7 +682,7 @@
                     </div>
                 </div>
                 <div class="singer-card">
-                    <div class="singer-img" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="singer-img" style="background-image: url('https::/images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
                     <h3>Dikshu</h3>
                     <p>Modern Fusion Artist</p>
                     <div class="social-links">
@@ -715,7 +733,7 @@
                         <div class="duration">4:56</div>
                     </div>
                     <div class="playlist-item">
-                        <div class="album-art" style="background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="album-art" style="background-image: url('https::/images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
                         <div class="track-info">
                             <h4>Silchar Nights</h4>
                             <p>Kalpana Patowary</p>
@@ -723,7 +741,7 @@
                         <div class="duration">3:45</div>
                     </div>
                     <div class="playlist-item">
-                        <div class="album-art" style="background-image: url('httpsfs://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="album-art" style="background-image: url('https::/images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
                         <div class="track-info">
                             <h4>River Songs</h4>
                             <p>Bhupen Uzir</p>
@@ -747,13 +765,13 @@
                         <p>A year of epic performances</p>
                     </div>
                 </div>
-                <div class="memory-card" data-year="2023" style="background-image: url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');">
+                <div class="memory-card" data-year="2023" style="background-image: url('https::/images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');">
                     <div class="memory-overlay">
                         <h3>2023</h3>
                         <p>The sounds of the season</p>
                     </div>
                 </div>
-                <div class="memory-card" data-year="2022" style="background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');">
+                <div class="memory-card" data-year="2022" style="background-image: url('https::/images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');">
                 <div class="memory-overlay">
                         <h3>2022</h3>
                         <p>Relive the classic moments</p>
@@ -770,7 +788,6 @@
             </div>
             
             <div class="booking-list-container">
-                
                 <div class="booking-event-item">
                     <div class="event-info">
                         <h3>Barak Valley Music Festival</h3>
@@ -780,7 +797,6 @@
                         <i class="fas fa-ticket-alt"></i> Book Now
                     </button>
                 </div>
-
                 <div class="booking-event-item">
                     <div class="event-info">
                         <h3>New Artist Showcase</h3>
@@ -790,7 +806,6 @@
                         <i class="fas fa-ticket-alt"></i> Book Now
                     </button>
                 </div>
-
                 <div class="booking-event-item sold-out">
                     <div class="event-info">
                         <h3>Folk Fusion Night</h3>
@@ -800,7 +815,6 @@
                         Sold Out
                     </button>
                 </div>
-
                 <div class="booking-event-item sold-out">
                     <div class="event-info">
                         <h3>Zubeen Garg Live (Archives)</h3>
@@ -817,17 +831,17 @@
     <section id="members">
         <div class="container">
             <div class="section-title">
-                <h2>Meet The Team</h2>
+                <h2>Golden Members</h2>
             </div>
-            <div class="members-grid">
+            <div class="members-grid members-grid-golden">
                 <div class="member-card">
                     <div class="member-header">
-                        <div class="member-img" style="background-image: url('https://images.unsplash.co-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
-                        <h3>Person 1</h3>
-                        <p class="role">Event head</p>
+                        <img src="images/member1.jpg" alt="Golden Member 1" class="member-img">
+                        <h3>Diponkar</h3>
+                        <p class="role">Founder & Lead Curator</p>
                     </div>
                     <div class="member-details">
-                        <p>Person is the visionary behind Hozaak, passionate about promoting Barak Valley's music scene.</p>
+                        <p>Diponkar is the visionary behind Hozaak, passionate about promoting Barak Valley's music scene.</p>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -837,27 +851,12 @@
                 </div>
                 <div class="member-card">
                     <div class="member-header">
-                        <div class="member-img" style="background-image: url('https://images.unsplash.com/photo-1494790108755-2616c113a1c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');"></div>
-                        <h3>Person 2</h3>
-                        <p class="role">Events Manager</p>
+                        <img src="images/member2.jpg" alt="Golden Member 2" class="member-img">
+                        <h3>Sumit</h3>
+                        <p class="role">Head of A&R</p>
                     </div>
                     <div class="member-details">
-                        <p>Person curates and manages all the amazing events and festivals featured on Hozaak.</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <div class="member-header">
-                        <div class="member-img" style="background-image: url('https://im&=format&fit=crop&w=1350&q=80');"></div>
-                        <h3>Person 3</h3>
-                        <p class="role">Music Relations Lead</p>
-                    </div>
-                    <div class="member-details">
-                        <p>Person works closely with artists, both established and emerging, to bring their music to you.</p>
+                        <p>Sumit curates and manages all the amazing events and artists featured on Hozaak.</p>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -925,27 +924,27 @@
             <h2 id="modalYearTitle" class="modal-title">Gallery: 2024 Highlights</h2>
             <div id="modalGalleryGrid" class="modal-gallery-grid">
                 <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200" alt="Concert Photo 1">
-                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200" alt="Concert Photo 2">
-                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200" alt="Concert Photo 3">
-                <img src="https... (and so on)" alt="Concert Photo ...">
+                <img src="https::/images.unsplash.com/photo-1470225620780-dba8ba36b745?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200" alt="Concert Photo 2">
+                <img src="https::/images.unsplash.com/photo-1514525253161-7a46d19cd819?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200" alt="Concert Photo 3">
+                <img src="https::/images.unsplash.com/photo-1493225457124-a3eb161ffa5f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200" alt="Concert Photo 4">
+                <img src="https::/images.unsplash.com/photo-1483391265910-a8725f02d7b4?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200" alt="Concert Photo 5">
+                <img src="https::/images.unsplash.com/photo-1459749411175-04bf5292ceea?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200" alt="Concert Photo 6">
             </div>
         </div>
     </div>
 
 
     <script>
-        // ===== NEW: Hamburger Menu Toggle =====
+        // Hamburger Menu Toggle
         const navToggle = document.getElementById('nav-toggle');
         const navMenu = document.getElementById('nav-menu');
         const navLinks = document.querySelectorAll('#nav-menu a');
 
         navToggle.addEventListener('click', () => {
-            // Toggle .active class on both the button (for 'X') and the menu (to show)
             navToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
 
-        // Optional: Close menu when a link is clicked (good for SPAs)
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
@@ -954,7 +953,7 @@
         });
 
 
-        // ===== Modal Logic (existing) =====
+        // Modal Logic
         const modal = document.getElementById("memoryModal");
         const modalTitle = document.getElementById("modalYearTitle");
         const modalGallery = document.getElementById("modalGalleryGrid"); 
@@ -963,11 +962,10 @@
 
         const galleryImages = [
             "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200",
-            "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200",
-            "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200",
-            "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200",
-            "https://images.unsplash.com/photo-1483391265910-a8725f02d7b4?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200",
-            "https(etc...)"
+            "https::/images.unsplash.com/photo-1470225620780-dba8ba36b745?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200",
+            "https::/images.unsplash.com/photo-1514525253161-7a46d19cd819?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200",
+            "https::/images.unsplash.com/photo-1493225457124-a3eb161ffa5f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200",
+            "https::/images.unsplash.com/photo-1483391265910-a8725f02d7b4?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=130&q=80&w=200",
         ];
 
         function populateModalGallery(year) {
