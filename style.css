@@ -1,0 +1,68 @@
+/* This imports Tailwind's base styles, components, and utilities.
+   This file now controls all the styling for your site.
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Custom Styles --- */
+
+/* 1. Set default font and background */
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    /* These are now the defaults, but good to have */
+    background-color: #050505;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* 2. Custom Gradient Text (for titles) */
+.text-gradient {
+    background: linear-gradient(90deg, #FF416C, #FF4B2B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 3. Button Glow Animation */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px #FF416C, 0 0 10px #FF416C; }
+    50% { box-shadow: 0 0 20px #FF416C, 0 0 30px #FF416C; }
+    100% { box-shadow: 0 0 5px #FF416C, 0 0 10px #FF416C; }
+}
+.btn-glow {
+    animation: glow 2.5s infinite linear;
+}
+
+/* 4. Horizontal Scrollbar Styling (Subtle) */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* 5. Custom class for scrolled header (Glassmorphism) */
+.header-scrolled {
+    background-color: rgba(5, 5, 5, 0.7) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 6. NEW: Hero Background Slow Zoom Animation */
+@keyframes slowZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+.hero-bg-animate img {
+    /* This animation creates a subtle, professional "Ken Burns"
+       effect on your hero image, making it feel alive.
+    */
+    animation: slowZoom 20s infinite alternate ease-in-out;
+}
+
