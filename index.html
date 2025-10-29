@@ -11,62 +11,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-    // This is our new "Billion Dollar" Assamese color palette
-    tailwind.config = {
-        theme: {
-        extend: {
-            colors: {
-                'assam-red': '#D93025',   // Vibrant Gamosa Red
-                'tea-green': '#34A853',   // Lush Tea Garden Green
-                'river-blue': '#4285F4',  // Brahmaputra Blue
-                'assam-gold': '#FAA91A',  // Festive Gold
-                'dark-text': '#1a1a1a',   // Primary text
-                'light-text': '#4f4f4f',  // Secondary text
-                'light-bg': '#f9f9f9',    // Light background for sections
-            }
-        }
-        }
-    }
-    </script>
-    
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body class="bg-white text-dark-text">
+<body class="bg-brand-dark text-white">
 
     <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
         <nav class="container mx-auto max-w-7xl px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-3xl font-black uppercase tracking-wide text-dark-text">
+            <a href="#" class="text-3xl font-black uppercase tracking-wide text-gradient-animated">
                 Hozaak
-                <span class="block text-xs font-light text-gradient">The Sound of Assam</span>
             </a>
 
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#music" class="nav-link">Music</a>
-                <a href="#videos" " class="nav-link">Videos</a>
+                <a href="#videos" class="nav-link">Videos</a>
                 <a href="#artists" class="nav-link">Artists</a>
                 <a href="#spotlight" class="nav-link">Spotlight</a>
                 <a href="#events" class="nav-link">Events</a>
-                <a href="#" class="btn-primary">
+                <a href="#" class="btn-primary btn-glow">
                     Contact
                 </a>
             </div>
 
-            <button id="nav-toggle" class="md:hidden z-50 text-dark-text">
+            <button id="nav-toggle" class_name="md:hidden z-50 text-white">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
         
-        <div id="mobile-menu" class="md:hidden fixed top-0 left-0 w-full h-full bg-white transform -translate-x-full transition-transform duration-300 z-40">
+        <div id="mobile-menu" class="md:hidden fixed top-0 left-0 w-full h-full bg-brand-dark transform -translate-x-full transition-transform duration-300 z-40">
             <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl">
-                <a href="#music" class="mobile-link text-dark-text">Music</a>
-                <a href="#videos" class="mobile-link text-dark-text">Videos</a>
-                <a href="#artists" class="mobile-link text-dark-text">Artists</a>
-                <a href="#spotlight" class="mobile-link text-dark-text">Spotlight</a>
-                <a href="#events" class="mobile-link text-dark-text">Events</a>
-                <a href="#" class="btn-primary text-xl">
+                <a href="#music" class="mobile-link text-white">Music</a>
+                <a href="#videos" class="mobile-link text-white">Videos</a>
+                <a href="#artists" class="mobile-link text-white">Artists</a>
+                <a href="#spotlight" class="mobile-link text-white">Spotlight</a>
+                <a href="#events" class="mobile-link text-white">Events</a>
+                <a href="#" class="btn-primary btn-glow text-xl">
                     Contact
                 </a>
             </div>
@@ -77,63 +56,63 @@
 
         <section id="hero" class="h-screen min-h-[700px] flex items-center justify-center relative -mt-[88px] pt-[88px]">
             <div class="absolute inset-0 z-0 hero-bg-animate">
-                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1920&q=80" 
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1920&q=80" 
                      alt="Concert Background" class="object-cover w-full h-full opacity-20">
-                <div class="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/70 to-transparent"></div>
             </div>
 
             <div class="relative z-10 text-center px-6" data-aos="fade-up">
-                <span class="text-sm font-semibold uppercase tracking-widest text-assam-red font-bold">The Global Sound of Assam</span>
+                <span class="text-sm font-semibold uppercase tracking-widest text-brand-pink text-glow">The Global Sound of Assam</span>
                 <h1 class="text-5xl md:text-8xl font-black uppercase my-4 text-shadow-premium">
-                    THE SOUL OF<br> <span class="text-gradient">BARAK VALLEY</span>
+                    THE VIBE OF<br> <span class="text-gradient-animated">BARAK VALLEY</span>
                 </h1>
-                <h2 class="text-2xl md:text-3xl font-light text-light-text mb-8 max-w-2xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-light text-gray-300 mb-8 max-w-2xl mx-auto">
                     From our roots to the world stage. Welcome to the home of Assamese music.
                 </h2>
-                <a href="#music" class="btn-primary btn-glow text-lg shadow-lg shadow-assam-red/30">
+                <a href="#music" class="btn-primary btn-glow-pulse text-lg">
                     Explore Releases
                 </a>
             </div>
         </section>
 
         <section id="music" class="container mx-auto max-w-7xl px-6 py-20">
-            <h2 class="section-title" data-aos="fade-right">Latest <span class="text-gradient">Releases</span></h2>
+            <h2 class="section-title" data-aos="fade-right">Latest <span class="text-gradient-animated">Releases</span></h2>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-                <div class="music-card" data-aos="fade-up" data-aos-delay="0">
-                    <div class="music-card-image">
+                <div class="card-glow-container" data-aos="fade-up" data-aos-delay="0">
+                    <div class="music-card">
                         <img src="https://images.unsplash.com/photo-1587189178149-1e391108253a?auto=format&fit=crop&w=600&q=80" alt="Album Art">
+                        <h3 class="music-card-title">River's Echo</h3>
+                        <p class="music-card-artist">Papon</p>
                     </div>
-                    <h3 class="music-card-title">River's Echo</h3>
-                    <p class="music-card-artist">Papon</p>
                 </div>
-                <div class="music-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="music-card-image">
+                <div class="card-glow-container" data-aos="fade-up" data-aos-delay="100">
+                    <div class="music-card">
                         <img src="https://images.unsplash.com/photo-1516239104-18d6a6c2308c?auto=format&fit=crop&w=600&q=80" alt="Album Art">
+                        <h3 class="music-card-title">Valley King</h3>
+                        <p class="music-card-artist">Zubeen Garg</p>
                     </div>
-                    <h3 class="music-card-title">Valley King</h3>
-                    <p class="music-card-artist">Zubeen Garg</p>
                 </div>
-                <div class="music-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="music-card-image">
+                <div class="card-glow-container" data-aos="fade-up" data-aos-delay="200">
+                    <div class="music-card">
                         <img src="https://images.unsplash.com/photo-1500462918059-b7f0cb592f91?auto=format&fit=crop&w=600&q=80" alt="Album Art">
+                        <h3 class="music-card-title">Sargam</h3>
+                        <p class="music-card-artist">Shreya Ghoshal</p>
                     </div>
-                    <h3 class="music-card-title">Sargam</h3>
-                    <p class="music-card-artist">Shreya Ghoshal</p>
                 </div>
-                <div class="music-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="music-card-image">
-                        <img src="https://images.unsplash.com/photo-1557053910-d9eade7b9f19?auto=format&fit=crop&w=600&q=80" alt="Album Art">
+                <div class="card-glow-container" data-aos="fade-up" data-aos-delay="300">
+                    <div class="music-card">
+                        <img src="httpsD://images.unsplash.com/photo-1557053910-d9eade7b9f19?auto=format&fit=crop&w=600&q=80" alt="Album Art">
+                        <h3 class="music-card-title">Goru Bihu</h3>
+                        <p class="music-card-artist">Bihu Collective</p>
                     </div>
-                    <h3 class="music-card-title">Goru Bihu</h3>
-                    <p class="music-card-artist">Bihu Collective</p>
                 </div>
             </div>
         </section>
 
-        <section id="videos" class="bg-light-bg py-20">
+        <section id="videos" class="bg-brand-dark-2 py-20">
             <div class="container mx-auto max-w-7xl px-6">
-                <h2 class="section-title" data-aos="fade-right">Top <span class="text-gradient">Videos</span></h2>
+                <h2 class="section-title" data-aos="fade-right">Top <span class="text-gradient-animated">Videos</span></h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="video-card" data-aos="fade-up" data-aos-delay="0">
@@ -144,7 +123,7 @@
                             </div>
                         </a>
                         <h3 class="text-xl font-bold mt-4">River's Echo (Official Music Video)</h3>
-                        <p class="text-light-text">Papon | 1.2M Views</p>
+                        <p class="text-gray-400">Papon | 1.2M Views</p>
                     </div>
                     <div class="video-card" data-aos="fade-up" data-aos-delay="100">
                         <a href="#" class="video-card-image">
@@ -154,17 +133,17 @@
                             </div>
                         </a>
                         <h3 class="text-xl font-bold mt-4">Hozaak Fest 2025 - Aftermovie</h3>
-                        <p class="text-light-text">Hozaak Media | 800K Views</p>
+                        <p class="text-gray-400">Hozaak Media | 800K Views</p>
                     </div>
                     <div class="video-card" data-aos="fade-up" data-aos-delay="200">
                         <a href="#" class="video-card-image">
-                            <img src="https://images.unsplash.com/photo-1516223638250-f83be2b40b2b?auto=format&fit=crop&w=600&h=400&q=80" alt="Video Thumbnail">
+                            <img src="https.com/photo-1516223638250-f83be2b40b2b?auto=format&fit=crop&w=600&h=400&q=80" alt="Video Thumbnail">
                             <div class="video-play-button">
                                 <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
                             </div>
                         </a>
                         <h3 class="text-xl font-bold mt-4">In The Studio with Zubeen</h3>
-                        <p class="text-light-text">Behind The Scenes | 450K Views</p>
+                        <p class="text-gray-400">Behind The Scenes | 450K Views</p>
                     </div>
                 </div>
             </div>
@@ -172,40 +151,48 @@
 
         <section id="artists" class="py-20">
             <div class="container mx-auto max-w-7xl px-6">
-                <h2 class="section-title" data-aos="fade-right">Meet The <span class="text-gradient">Talent</span></h2>
+                <h2 class="section-title" data-aos="fade-right">Meet The <span class="text-gradient-animated">Talent</span></h2>
                 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-                    <a href="#" class="artist-card" data-aos="fade-up" data-aos-delay="0">
-                        <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=400&h=500&q=80" alt="Papon">
-                        <div class="artist-card-overlay">
-                            <h3 class="artist-card-name">Papon</h3>
-                        </div>
-                    </a>
-                    <a href="#" class="artist-card" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://images.unsplash.com/photo-1559422881-80c088c6c5b0?auto=format&fit=crop&w=400&h=500&q=80" alt="Zubeen Garg">
-                        <div class="artist-card-overlay">
-                            <h3 class="artist-card-name">Zubeen Garg</h3>
-                        </div>
-                    </a>
-                    <a href="#" class="artist-card" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://images.unsplash.com/photo-1488716826262-a42153164c67?auto=format&fit=crop&w=400&h=500&q=80" alt="Shreya Ghoshal">
-                        <div class="artist-card-overlay">
-                            <h3 class="artist-card-name">Shreya Ghoshal</h3>
-                        </div>
-                    </a>
-                    <a href="#" class="artist-card" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=400&h=500&q=80" alt="Diljit Dosanjh">
-                        <div class="artist-card-overlay">
-                            <h3 class="artist-card-name">Diljit Dosanjh</h3>
-                        </div>
-                    </a>
+                    <div class_name="card-glow-container" data-aos="fade-up" data-aos-delay="0">
+                        <a href="#" class="artist-card">
+                            <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=400&h=500&q=80" alt="Papon">
+                            <div class="artist-card-overlay">
+                                <h3 class="artist-card-name">Papon</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class_name="card-glow-container" data-aos="fade-up" data-aos-delay="100">
+                        <a href="#" class="artist-card">
+                            <img src="https://images.unsplash.com/photo-1559422881-80c088c6c5b0?auto=format&fit=crop&w=400&h=500&q=80" alt="Zubeen Garg">
+                            <div class="artist-card-overlay">
+                                <h3 class="artist-card-name">Zubeen Garg</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class_name="card-glow-container" data-aos="fade-up" data-aos-delay="200">
+                        <a href="#" class="artist-card">
+                            <img src="https://images.unsplash.com/photo-1488716826262-a42153164c67?auto=format&fit=crop&w=400&h=500&q=80" alt="Shreya Ghoshal">
+                            <div class="artist-card-overlay">
+                                <h3 class="artist-card-name">Shreya Ghoshal</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class_name="card-glow-container" data-aos="fade-up" data-aos-delay="300">
+                        <a href="#" class="artist-card">
+                            <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=400&h=500&q=80" alt="Diljit Dosanjh">
+                            <div class="artist-card-overlay">
+                                <h3 class="artist-card-name">Diljit Dosanjh</h3>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="spotlight" class="py-20 bg-light-bg">
+        <section id="spotlight" class="py-20 bg-brand-dark-2">
             <div class="container mx-auto max-w-7xl px-6">
-                <h2 class="section-title text-center" data-aos="fade-up">Artist <span class="text-gradient">Spotlight</span></h2>
+                <h2 class="section-title text-center" data-aos="fade-up">Artist <span class="text-gradient-animated">Spotlight</span></h2>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-10" data-aos="fade-up" data-aos-delay="100">
                     <div class="rounded-2xl overflow-hidden shadow-2xl">
@@ -213,8 +200,8 @@
                     </div>
 
                     <div>
-                        <h3 class="text-6xl font-black text-dark-text text-shadow-premium">PAPON</h3>
-                        <p class="text-lg text-light-text my-6">
+                        <h3 class="text-6xl font-black text-white text-shadow-premium">PAPON</h3>
+                        <p class="text-lg text-gray-300 my-6">
                             Angaraag Mahanta, known by his stage name Papon, is an Indian playback singer, composer and record producer. He is the lead singer and founder of the folk-fusion band Papon and The East India Company.
                         </p>
                         
@@ -222,11 +209,11 @@
                             <div class="flex items-center space-x-5">
                                 <img src="https://images.unsplash.com/photo-1587189178149-1e391108253a?auto=format&fit=crop&w=200&q=80" alt="Album Art" class="w-20 h-20 rounded-lg shadow-lg">
                                 <div>
-                                    <h4 class="text-xl font-bold text-dark-text">River's Echo</h4>
-                                    <p class="text-light-text">Papon</p>
+                                    <h4 class="text-xl font-bold text-white">River's Echo</h4>
+                                    <p class="text-gray-400">Papon</p>
                                 </div>
                                 <div class="flex-grow"></div>
-                                <button class="w-16 h-16 bg-gradient-to-r from-assam-red to-orange-500 rounded-full flex items-center justify-center text-white shadow-lg shadow-assam-red/40 transition-transform hover:scale-110">
+                                <button class="w-16 h-16 bg-gradient-to-r from-brand-pink to-brand-purple rounded-full flex items-center justify-center text-white shadow-lg shadow-brand-pink/30 transition-transform hover:scale-110 btn-glow-pulse">
                                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
                                 </button>
                             </div>
@@ -236,88 +223,24 @@
             </div>
         </section>
 
-        <section id="events" class="container mx-auto max-w-7xl px-6 py-20">
-            <h2 class="section-title text-center" data-aos="fade-up">Hozaak <span class="text-gradient">Live</span></h2>
-            
-            <div class="max-w-3xl mx-auto space-y-6 mt-10">
-                <div class="event-card" data-aos="fade-up">
-                    <div class="event-date">
-                        <span class="text-4xl font-black text-assam-red">DEC</span>
-                        <span class="block text-5xl font-black">20</span>
-                    </div>
-                    <div class="event-details">
-                        <h3 class="text-2xl font-bold">Hozaak Fest 2026</h3>
-                        <p class="text-light-text">Main Grounds, Silchar</p>
-                    </div>
-                    <div class="event-action">
-                        <a href="#" class="btn-primary">
-                            Get Tickets
-                        </a>
-                    </div>
-                </div>
-                <div class="event-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="event-date">
-                        <span class="text-4xl font-black text-assam-red">JAN</span>
-                        <span class="block text-5xl font-black">15</span>
-                    </div>
-                    <div class="event-details">
-                        <h3 class="text-2xl font-bold">Papon: River's Echo Tour</h3>
-                        <p class="text-light-text">Guwahati, Assam</p>
-                    </div>
-                    <div class="event-action">
-                        <a href="#" class="btn-secondary">
-                            Sold Out
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </main>
 
-    <footer class="bg-dark-text text-white mt-20">
-        <div class="container mx-auto max-w-7xl px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div>
-                <a href="#" class="text-3xl font-black uppercase tracking-wide">
-                    Hozaak
-                    <span class="block text-xs font-light text-gradient">The Sound of Assam</span>
-                </a>
-                <p class="text-gray-400 mt-4 text-sm">
-                    The heartbeat of Assam's music scene. Bringing local talent to the global stage.
-                </p>
-            </div>
-
-            <div>
-                <h4 class="footer-title">Explore</h4>
-                <ul class="footer-list">
-                    <li><a href="#music" class="footer-link">Music</a></li>
-                    <li><a href="#videos" class="footer-link">Videos</a></li>
-                    <li><a href="#artists" class="footer-link">Artists</a></li>
-                    <li><a href="#events" class="footer-link">Events</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="footer-title">Legal</h4>
-                <ul class="footer-list">
-                    <li><a href="#" class="footer-link">Privacy Policy</a></li>
-                    <li><a href="#" class="footer-link">Terms of Service</a></li>
-                    <li><a href="#" class="footer-link">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="footer-title">Follow Us</h4>
-                <div class="flex space-x-4">
-                    <a href="#" class="social-link"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.85s.011-3.584.069-4.85c.149-3.225 1.664-4.771 4.919 4.919 1.266-.058 1.644-.07 4.85-.07zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.668-.072-4.948C21.728 2.69 19.302.274 14.948.073 13.668.014 13.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"></path></svg></a>
-                    <a href="#" class="social-link"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.59 0 0 .59 0 1.325v21.35C0 23.41.59 24 1.325 24h11.495v-9.29H9.69V11.07h3.128V8.41c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24h-1.918c-1.504 0-1.795.715-1.795 1.763v2.31h3.587l-.467 3.64H16.56V24h6.115c.735 0 1.325-.59 1.325-1.325V1.325C24 .59 23.41 0 22.675 0z"></path></svg></a>
-                    <a href="#" class="social-link"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.122C19.503 3.545 12 3.545 12 3.545s-7.503 0-9.377.519A3.016 3.016 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.122C4.497 20.455 12 20.455 12 20.455s7.503 0 9.377-.519a3.016 3.016 0 0 0 2.122-2.122C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12 9.545 15.568z"></path></svg></a>
-                </div>
+    <footer class="bg-brand-dark-2 border-t border-brand-purple/20 mt-20">
+        <div class="container mx-auto max-w-7xl px-6 py-16 text-center">
+            <a href="#" class="text-4xl font-black uppercase tracking-wide text-gradient-animated">
+                Hozaak
+            </a>
+            <p class="text-gray-400 mt-4 text-sm max-w-md mx-auto">
+                The heartbeat of Assam's music scene. Bringing local talent to the global stage.
+            </p>
+            <div class="flex justify-center space-x-6 mt-8">
+                <a href="#" class="social-link">Instagram</a>
+                <a href="#" class="social-link">Facebook</a>
+                <a href="#" class="social-link">YouTube</a>
             </div>
         </div>
-
-        <div class="border-t border-gray-700 py-6">
-            <p class="text-center text-gray-400 text-sm">
+        <div class="border-t border-brand-purple/20 py-6">
+            <p class="text-center text-gray-500 text-sm">
                 &copy; 2025 Hozaak Media. All Rights Reserved. Built with ❤️ in Barak Valley.
             </p>
         </div>
