@@ -99,24 +99,52 @@ nav ul li a {
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1rem;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease; /* Only transition color */
     padding: 8px 12px;
     border-radius: 5px;
-    position: relative; 
+    position: relative;
 }
-nav ul li a:hover { 
-    color: var(--accent); 
-    background: rgba(255, 255, 255, 0.1); 
+nav ul li a:hover {
+    color: var(--accent);
 }
+
+/* Underline for hover */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; /* Start with no width */
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.3s ease-out; /* Animate width */
+}
+
+/* Expand underline on hover */
+nav ul li a:hover::after {
+    width: calc(100% - 24px); /* (100% - padding-left - padding-right) */
+}
+
+/* Permanent underline for active link */
 nav ul li a.active::after {
     content: '';
     position: absolute;
-    bottom: -5px; 
+    bottom: -5px;
     left: 12px;
     right: 12px;
+    width: auto; /* Use left/right to set width */
     height: 3px;
-    background: var(--accent); 
+    background: var(--accent);
     border-radius: 2px;
+    transition: none; /* No animation */
+    transform: none; /* Reset transform */
+}
+
+/* Stop hover animation on active link */
+nav ul li a.active:hover::after {
+    width: auto;
 }
 
 /* Desktop Social Icons */
@@ -537,10 +565,11 @@ footer { background: rgba(0, 0, 0, 0.9); padding: 60px 0 30px; }
         backdrop-filter: blur(10px);
         padding: 15px 0;
         box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        overflow: hidden; /* Prevent content from flashing */
     }
     nav.active {
         display: flex; 
-        animation: fadeInUp 0.3s ease;
+        /* animation: fadeInUp 0.3s ease; */ /* Replaced with staggered animation */
     }
     nav ul { 
         flex-direction: column; 
@@ -551,7 +580,24 @@ footer { background: rgba(0, 0, 0, 0.9); padding: 60px 0 30px; }
     nav ul li { 
         margin: 8px 0; 
         width: 90%; 
+        opacity: 0; /* Hide initially */
+        transform: translateY(20px); /* Start slightly lower */
     }
+    
+    /* Animate them in when menu is active */
+    nav.active ul li {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    }
+
+    /* Stagger the animation */
+    nav.active ul li:nth-child(1) { transition-delay: 0.1s; }
+    nav.active ul li:nth-child(2) { transition-delay: 0.15s; }
+    nav.active ul li:nth-child(3) { transition-delay: 0.2s; }
+    nav.active ul li:nth-child(4) { transition-delay: 0.25s; }
+    nav.active ul li:nth-child(5) { transition-delay: 0.3s; }
+
     nav ul li a {
         display: block;
         text-align: center;
@@ -559,6 +605,7 @@ footer { background: rgba(0, 0, 0, 0.9); padding: 60px 0 30px; }
         font-size: 1.2rem;
         border-radius: 8px;
         color: var(--light); 
+        transition: background 0.3s ease, color 0.3s ease; /* Added transition */
     }
     nav ul li a.active::after {
         display: none;
@@ -575,11 +622,21 @@ footer { background: rgba(0, 0, 0, 0.9); padding: 60px 0 30px; }
         padding-top: 15px;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
         width: 90%;
+        opacity: 0; /* Hide initially */
+        transform: translateY(20px);
+        transition: opacity 0.3s ease-out 0.35s, transform 0.3s ease-out 0.35s; /* Fade in after links */
     }
+
+    nav.active .nav-social-mobile {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
     .nav-social-mobile a {
         color: var(--light);
         font-size: 1.5rem;
         padding: 5px;
+        transition: color 0.3s ease; /* Added transition */
     }
     .nav-social-mobile a:hover {
         color: var(--accent);
