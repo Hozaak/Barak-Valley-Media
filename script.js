@@ -82,3 +82,24 @@ if (viewAllMembersBtn && membersGrid) {
         membersGrid.classList.add('show-all');
     });
 }
+
+
+// <<<<< NAYA ANIMATION CODE YAHAN HAI >>>>>
+
+// NEW Scroll-to-Reveal Animation Logic
+const revealElements = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // Stop observing once visible
+        }
+    });
+}, {
+    threshold: 0.1 // Trigger when 10% of the element is visible
+});
+
+revealElements.forEach(el => {
+    revealObserver.observe(el);
+});
