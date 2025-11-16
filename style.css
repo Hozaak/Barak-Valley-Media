@@ -1,18 +1,20 @@
 /* Base Styles */
 :root {
-    /* --- Vibrant Dark Theme Colors --- */
+    /* --- Vibrant Dark Theme Colors (UNCHANGED) --- */
     --primary: #FF5722;   /* Vibrant Orange */
-    --secondary: #4CAF50; /* Vibrant Green */
+    --secondary: #4CAF50; /* Base Green */
     --accent: #FFC107;   /* Golden/Yellow */
     --dark: #1a1a2e;
     --light: #f5f5f5;
-    /* New: High-Contrast Colors for Block Sections (Replacing Pink/Neon Green) */
-    --vibrant-1: #FF3E6C;  /* Hot Pink/Magenta */
-    --vibrant-2: #FF7043;  /* Bright Coral/Light Orange (Not widely used) */
-    --vibrant-3: #4CAF50;  /* Secondary Green */
+    
+    /* NEW: High-Contrast Colors for Musical Vibe */
+    --vibrant-main: #00BCD4;     /* Deep Cyan/Teal (replaces Hot Pink) */
+    --vibrant-secondary: #CCFF00; /* Neon Lime/Electric Green (replaces Secondary Green) */
+    --vibrant-2: #FF7043;        /* Bright Coral/Light Orange */
 }
 
-/* Animations */
+/* Animations (Keep existing animations) */
+
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
@@ -51,7 +53,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-    background: var(--dark); /* Start with a solid dark base */
+    background: var(--dark); 
     color: var(--light);
     line-height: 1.6;
     overflow-x: hidden;
@@ -98,16 +100,16 @@ nav ul li a {
     border-radius: 5px;
     position: relative;
 }
-nav ul li a:hover { color: var(--accent); }
+nav ul li a:hover { color: var(--vibrant-main); } /* Teal Hover */
 
 nav ul li a::after {
     content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
-    width: 0; height: 3px; background: var(--accent); border-radius: 2px; transition: width 0.3s ease-out;
+    width: 0; height: 3px; background: var(--vibrant-main); border-radius: 2px; transition: width 0.3s ease-out; /* Teal Underline */
 }
 nav ul li a:hover::after { width: calc(100% - 24px); }
 nav ul li a.active::after {
     content: ''; position: absolute; bottom: -5px; left: 12px; right: 12px;
-    width: auto; height: 3px; background: var(--accent); border-radius: 2px;
+    width: auto; height: 3px; background: var(--vibrant-main); border-radius: 2px; /* Teal Active Underline */
     transition: none; transform: none;
 }
 nav ul li a.active:hover::after { width: auto; }
@@ -115,7 +117,9 @@ nav ul li a.active:hover::after { width: auto; }
 
 .header-social { display: flex; gap: 25px; flex-shrink: 0; }
 .header-social a { color: var(--light); font-size: 1.1rem; transition: all 0.3s ease; }
-.header-social a:hover { color: var(--accent); transform: scale(1.1); }
+.header-social a:hover { color: var(--vibrant-secondary); transform: scale(1.1); } /* Neon Lime Hover */
+
+
 .nav-social-mobile { display: none; } 
 .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 10px; z-index: 1001; }
 .nav-toggle .bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: var(--light); transition: all 0.3s ease-in-out; }
@@ -163,7 +167,7 @@ section {
     left: 0;
     width: 100%;
     height: 100px;
-    background: var(--vibrant-1); /* Magenta */
+    background: var(--vibrant-main); /* Teal */
     transform: skewY(-3deg);
     z-index: 1;
 }
@@ -171,7 +175,7 @@ section {
 /* --- HERO SECTION (Style 2: Overlapping Lineup) --- */
 .hero-style-2 {
     padding: 0; 
-    background: var(--vibrant-1); /* Use Magenta background */
+    background: var(--vibrant-main); /* Deep Cyan/Teal background */
     text-align: left;
     position: relative;
     overflow: hidden;
@@ -189,7 +193,7 @@ section {
 }
 
 .event-info-box {
-    background: var(--vibrant-3); /* Green for contrast */
+    background: var(--vibrant-secondary); /* Neon Lime for contrast */
     color: var(--dark);
     padding: 8px 15px;
     font-weight: 700;
@@ -226,6 +230,8 @@ section {
     background-position: center top;
     transition: all 0.5s ease;
     z-index: 1;
+    /* Add a subtle dark overlay to make text pop */
+    filter: brightness(0.9);
 }
 
 .artist-item:nth-child(1) { left: 0%; z-index: 4; transform: scale(1.05); } 
@@ -251,6 +257,8 @@ section {
     text-transform: uppercase;
     text-align: center;
     width: 25%;
+    /* Add subtle shadow for pop */
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 
@@ -278,7 +286,7 @@ section {
 }
 
 .tickets-live {
-    color: var(--vibrant-3); /* Green for "LIVE NOW" */
+    color: var(--vibrant-secondary); /* Neon Lime for "LIVE NOW" */
     font-size: 6rem;
 }
 
@@ -295,21 +303,21 @@ section {
 
 .btn-hero-2 {
     background: var(--dark); 
-    color: var(--vibrant-3); 
+    color: var(--vibrant-secondary); /* Neon Lime */
     padding: 15px 40px; 
     font-size: 1.2rem;
     border-radius: 50px; 
     display: inline-block; 
     text-decoration: none; 
     font-weight: 900;
-    border: 3px solid var(--vibrant-3);
+    border: 3px solid var(--vibrant-secondary);
 }
 
 .btn-hero-2:hover {
-    background: var(--vibrant-3);
+    background: var(--vibrant-secondary);
     color: var(--dark);
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 20px rgba(204, 255, 0, 0.5); /* Neon Lime Shadow */
 }
 
 /* Decorative Wave (simulating the shapes in the image) */
@@ -320,7 +328,7 @@ section {
     left: 0;
     width: 100%;
     height: 300px;
-    background: var(--vibrant-3); /* Green angled block */
+    background: var(--vibrant-secondary); /* Neon Lime angled block */
     transform: skewY(5deg);
     z-index: 5;
 }
@@ -332,16 +340,16 @@ section {
     left: 0;
     width: 100%;
     height: 300px;
-    background: var(--dark); /* Dark background behind the green for separation */
+    background: var(--dark); 
     transform: skewY(5deg);
     z-index: 4;
 }
 
-/* --- INTRO/ABOUT SECTION (Pink Block) --- */
+/* --- INTRO/ABOUT SECTION (Teal Block) --- */
 .intro-block {
     position: relative;
     padding: 60px 0;
-    background: var(--vibrant-1); /* Hot Pink Block */
+    background: var(--vibrant-main); /* Deep Cyan/Teal Block */
     text-align: center;
     z-index: 10;
 }
@@ -386,14 +394,14 @@ section {
 }
 .tickets-block .btn {
     background: var(--dark);
-    color: var(--vibrant-1);
+    color: var(--vibrant-main); /* Teal Button Text */
     font-size: 1.2rem;
     padding: 15px 40px;
     border-radius: 5px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
 }
 .tickets-block .btn:hover {
-    background: var(--vibrant-1);
+    background: var(--vibrant-main);
     color: var(--light);
 }
 
@@ -420,8 +428,6 @@ section {
 }
 
 /* --- EVENTS/LINEUP DETAIL SECTION --- */
-
-/* Remove old scroller section styling */
 .scroller-section { display: none; } 
 
 #events {
@@ -433,13 +439,20 @@ section {
     transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     position: relative; 
 }
-.event-card:hover { transform: translateY(-10px) scale(1.03); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); }
+.event-card:hover { 
+    transform: translateY(-10px) scale(1.03); 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--vibrant-main); /* Teal Glow on hover */
+}
 .event-img { height: 200px; background-size: cover; background-position: center; }
 .event-content { padding: 20px; }
-.event-date { color: var(--accent); font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.event-date { color: var(--vibrant-secondary); font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; } /* Neon Lime Date */
 .event-content h3 { font-size: 1.4rem; margin-bottom: 10px; }
 .event-content p { color: #bdbdbd; margin-bottom: 15px; }
-.btn-event { background: var(--primary); color: white; padding: 8px 20px; border-radius: 20px; text-decoration: none; display: inline-block; font-size: 0.9rem; }
+.btn-event { 
+    background: var(--primary); 
+    color: white; padding: 8px 20px; border-radius: 20px; text-decoration: none; 
+    display: inline-block; font-size: 0.9rem; 
+}
 .event-card .sold-out-tag {
     position: absolute; top: 15px; right: -30px; background: var(--primary);
     color: white; padding: 5px 30px; font-weight: 700; font-size: 0.9rem;
@@ -456,7 +469,7 @@ section {
     position: relative;
 }
 #gallery h2 {
-    color: var(--vibrant-1); /* Magenta title on Yellow background */
+    color: var(--vibrant-main); /* Teal title on Yellow background */
     text-shadow: none;
 }
 .memories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
@@ -471,9 +484,8 @@ section {
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
     padding: 20px; color: white; text-align: center;
 }
-.memory-overlay h3 { font-size: 2.5rem; margin-bottom: 5px; font-weight: 800; color: var(--accent); }
+.memory-overlay h3 { font-size: 2.5rem; margin-bottom: 5px; font-weight: 800; color: var(--vibrant-secondary); } /* Neon Lime Title in Overlay */
 .memory-overlay p { font-size: 1rem; color: var(--light); }
-
 
 /* Gallery section separator */
 #gallery::after {
@@ -483,31 +495,25 @@ section {
     left: 0;
     width: 100%;
     height: 80px;
-    background: var(--vibrant-3); /* Green block */
+    background: var(--vibrant-secondary); /* Neon Lime block */
     z-index: 2;
 }
 
-/* --- PARTNERS SECTION (Green Block) --- */
+/* --- PARTNERS SECTION (Neon Lime Block) --- */
 .partners-section { 
-    background: var(--vibrant-3); /* Green block for Partners section */
+    background: var(--vibrant-secondary); /* Neon Lime block for Partners section */
     padding-top: 120px; 
     padding-bottom: 120px;
     position: relative;
     z-index: 10;
 }
 .partners-section h2 {
-    color: var(--vibrant-1); /* Magenta title on Green background */
+    color: var(--vibrant-main); /* Teal title on Neon Lime background */
 }
 .partners-subtitle { color: var(--dark); }
-.partners-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    max-width: 900px;
-    margin: 0 auto;
-}
+
 .partner-logo {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.1); /* Darker logo box on bright background */
     border-radius: 15px;
     padding: 30px 20px;
     display: flex;
@@ -521,9 +527,9 @@ section {
     color: var(--dark);
 }
 .partner-logo:hover {
-    background: var(--light);
+    background: var(--dark);
     transform: translateY(-5px);
-    color: var(--vibrant-1);
+    color: var(--vibrant-main);
 }
 .partner-logo i {
     font-size: 2.5rem;
@@ -531,7 +537,7 @@ section {
     transition: all 0.3s ease;
 }
 .partner-logo:hover i {
-    color: var(--vibrant-1);
+    color: var(--vibrant-main);
 }
 
 /* Partners section divider */
@@ -542,7 +548,7 @@ section {
     left: 0;
     width: 100%;
     height: 100px;
-    background: var(--vibrant-1); /* Magenta block */
+    background: var(--vibrant-main); /* Teal block */
     transform: skewY(-3deg);
     z-index: 1;
 }
@@ -563,17 +569,17 @@ section {
 }
 .booking-event-item:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.02); }
 .event-info h3 { font-size: 1.5rem; margin-bottom: 5px; color: var(--light); }
-.event-info p { color: var(--vibrant-3); font-size: 1rem; }
+.event-info p { color: var(--vibrant-secondary); font-size: 1rem; } /* Neon Lime Event Location/Date */
 .btn-book-event {
-    background: var(--vibrant-1); /* Magenta button */
+    background: var(--vibrant-main); /* Teal button */
     color: white; padding: 12px 25px; font-size: 1rem; border-radius: 30px; border: none;
     font-weight: 700; cursor: pointer; transition: all 0.3s ease;
     display: flex; align-items: center; gap: 8px;
-    box-shadow: 0 8px 20px rgba(255, 62, 108, 0.4);
+    box-shadow: 0 8px 20px rgba(0, 188, 212, 0.4);
     animation: none; 
 }
 .btn-book-event:hover { 
-    background: var(--accent);
+    background: var(--vibrant-secondary);
     color: var(--dark);
     transform: translateY(-3px); 
 }
@@ -586,13 +592,7 @@ section {
 
 /* --- MEMBERS SECTION (Dark Block) --- */
 #members { background: var(--dark); }
-.members-grid-main {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px; 
-    max-width: 1200px; 
-    margin: 0 auto; 
-}
+.members-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
 .member-card {
     background: rgba(255, 255, 255, 0.08); border-radius: 15px; overflow: hidden;
     transition: all 0.3s ease, box-shadow 0.3s ease;
@@ -600,7 +600,7 @@ section {
 }
 .member-card:hover {
     transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 193, 7, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 25px var(--vibrant-main); /* Teal Glow on hover */
 }
 .member-golden-tag {
     position: absolute; top: 15px; right: -30px;
@@ -612,10 +612,10 @@ section {
 .member-header { padding: 20px; text-align: center; background: rgba(255, 255, 255, 0.1); }
 .member-img {
     width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 15px;
-    object-fit: cover; border: 3px solid var(--accent); display: block; 
+    object-fit: cover; border: 3px solid var(--vibrant-main); display: block; /* Teal Border */
 }
 .member-card h3 { font-size: 1.4rem; margin-bottom: 5px; }
-.member-card .role { color: var(--accent); font-weight: 600; }
+.member-card .role { color: var(--vibrant-secondary); font-weight: 600; } /* Neon Lime Role */
 .member-details { padding: 20px; }
 .member-details p { margin-bottom: 15px; color: #bdbdbd; }
 .social-links { display: flex; justify-content: center; gap: 15px; }
@@ -635,9 +635,9 @@ section {
 .members-grid-main.show-all + .view-all-container { max-height: 0; opacity: 0; margin-top: 0; }
 
 
-/* --- FOOTER (Magenta Block) --- */
+/* --- FOOTER (Teal Block) --- */
 footer { 
-    background: var(--vibrant-1); /* Magenta Footer */
+    background: var(--vibrant-main); /* Teal Footer */
     padding: 60px 0 30px; 
     color: var(--dark);
 }
@@ -730,7 +730,7 @@ footer {
         transition: background 0.3s ease, color 0.3s ease; 
     }
     nav ul li a.active::after { display: none; }
-    nav ul li a:hover { color: var(--dark); background: var(--accent); }
+    nav ul li a:hover { color: var(--dark); background: var(--vibrant-main); } /* Teal Hover */
 
     .nav-social-mobile {
         display: flex; justify-content: center; gap: 30px; margin: 0 auto 30px auto;
@@ -745,7 +745,7 @@ footer {
         color: var(--light); font-size: 1.8rem; padding: 10px;
         transition: color 0.3s ease, transform 0.3s ease;
     }
-    .nav-social-mobile a:hover { color: var(--accent); transform: scale(1.1); }
+    .nav-social-mobile a:hover { color: var(--vibrant-secondary); transform: scale(1.1); }
     
     /* Responsive Hero for 992px */
     .hero-style-2 { min-height: 80vh; }
