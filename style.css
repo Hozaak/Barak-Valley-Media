@@ -517,18 +517,19 @@ section {
 }
 .memories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
 .memory-card {
-    border-radius: 15px; overflow: hidden; position: relative; height: 300px;
+    border-radius: 15px; overflow: hidden; position: relative; height: 350px; /* INCREASED HEIGHT */
     background-size: cover; background-position: center; transition: all 0.3s ease;
     cursor: pointer; 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Added shadow */
 }
-.memory-card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); }
+.memory-card:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); } /* Stronger hover effect */
 .memory-overlay {
     position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-    padding: 20px; color: white; text-align: center;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); /* Darker gradient */
+    padding: 20px; color: white; text-align: left; /* Aligned left */
 }
-.memory-overlay h3 { font-size: 2.5rem; margin-bottom: 5px; font-weight: 800; color: var(--vibrant-secondary); } 
-.memory-overlay p { font-size: 1rem; color: var(--light); }
+.memory-overlay h3 { font-size: 2.8rem; margin-bottom: 5px; font-weight: 900; color: var(--vibrant-secondary); } /* Bolder/Larger text */
+.memory-overlay p { font-size: 1.1rem; color: var(--light); }
 
 /* Gallery section separator */
 #gallery::after {
@@ -642,35 +643,62 @@ section {
     max-width: 1200px; 
     margin: 0 auto; 
 }
+
+/* NEW MEMBER CARD STYLE */
 .member-card {
-    background: rgba(255, 255, 255, 0.08); border-radius: 15px; overflow: hidden;
+    border-radius: 15px; overflow: hidden;
     transition: all 0.3s ease, box-shadow 0.3s ease;
     position: relative; 
+    height: 400px; /* Fixed height for visual consistency */
+    background-size: cover;
+    background-position: center top;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
 }
 .member-card:hover {
     transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 25px var(--vibrant-main); 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 35px var(--vibrant-secondary); 
 }
+
+/* NEW: Image Overlay for 'Music Touch' */
+.member-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* Dark gradient for text legibility over the image */
+    background: linear-gradient(to top, rgba(16, 16, 16, 0.9), rgba(16, 16, 16, 0.3)); 
+    padding: 30px 20px 20px;
+    color: var(--light);
+    z-index: 10;
+}
+
 .member-golden-tag {
-    position: absolute; top: 15px; right: -30px;
+    position: absolute; top: 15px; right: 15px; 
     background: linear-gradient(135deg, var(--accent), #FFB300);
-    color: #422000; padding: 5px 30px; font-weight: 700; font-size: 0.9rem;
-    transform: rotate(45deg); box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    z-index: 2; text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
+    color: var(--dark); 
+    padding: 5px 15px; 
+    font-weight: 700; font-size: 0.9rem;
+    transform: none; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    z-index: 11; 
+    text-shadow: none; 
 }
-.member-header { padding: 20px; text-align: center; background: rgba(255, 255, 255, 0.1); }
-.member-img {
-    width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 15px;
-    object-fit: cover; border: 3px solid var(--vibrant-main); 
-    display: block; 
+
+/* Hiding old circular elements */
+.member-header, .member-img { display: none; } 
+
+.member-card h3 { font-size: 2rem; margin-bottom: 5px; color: var(--vibrant-secondary); } 
+.member-card .role { color: var(--vibrant-main); font-weight: 600; font-size: 1.1rem; } 
+.member-details { padding: 0 20px 10px; display: none; } /* Details moved into overlay */
+.member-details p { margin-bottom: 15px; color: #bdbdbd; font-size: 0.95rem;}
+
+.social-links { 
+    display: flex; justify-content: flex-start;
+    gap: 15px; margin-top: 15px; 
 }
-.member-card h3 { font-size: 1.4rem; margin-bottom: 5px; }
-.member-card .role { color: var(--vibrant-secondary); font-weight: 600; } 
-.member-details { padding: 20px; }
-.member-details p { margin-bottom: 15px; color: #bdbdbd; }
-.social-links { display: flex; justify-content: center; gap: 15px; }
-.social-links a { color: var(--light); font-size: 1.2rem; transition: all 0.3s ease; }
-.social-links a:hover { color: var(--accent); transform: scale(1.2); }
+.social-links a { color: var(--light); font-size: 1.5rem; transition: all 0.3s ease; }
+.social-links a:hover { color: var(--accent); transform: scale(1.1); }
 .members-grid-main .member-card:nth-child(n+4) { display: none; }
 .members-grid-main.show-all .member-card:nth-child(n+4) {
     display: block; 
