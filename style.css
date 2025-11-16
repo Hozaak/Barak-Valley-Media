@@ -1,20 +1,21 @@
 /* Base Styles */
 :root {
-    /* --- Vibrant Dark Theme Colors (UNCHANGED) --- */
+    /* --- Vibrant Theme Colors (Musical Vibe) --- */
     --primary: #FF5722;   /* Vibrant Orange */
-    --secondary: #4CAF50; /* Base Green */
     --accent: #FFC107;   /* Golden/Yellow */
-    --dark: #1a1a2e;
+    --dark: #101010;     /* Deeper Dark Background for contrast */
     --light: #f5f5f5;
     
-    /* NEW: High-Contrast Colors for Musical Vibe */
-    --vibrant-main: #00BCD4;     /* Deep Cyan/Teal (replaces Hot Pink) */
-    --vibrant-secondary: #CCFF00; /* Neon Lime/Electric Green (replaces Secondary Green) */
-    --vibrant-2: #FF7043;        /* Bright Coral/Light Orange */
+    /* CORE MUSICAL VIBE COLORS */
+    --vibrant-main: #00BCD4;     /* Deep Cyan/Teal */
+    --vibrant-secondary: #CCFF00; /* Neon Lime/Electric Green */
+    
+    /* GRADIENTS FOR HEADER LINKS */
+    --vibrant-link-gradient: linear-gradient(90deg, #CCFF00, #00BCD4); 
+    --vibrant-link-gradient-hover: linear-gradient(90deg, #FF5722, #FFC107); 
 }
 
-/* Animations (Keep existing animations) */
-
+/* Animations */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
@@ -62,16 +63,16 @@ body {
 
 .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* --- HEADER & NAVIGATION --- */
+/* --- PROFESSIONAL HEADER ENHANCEMENT --- */
 
 header {
-    background: rgba(33, 33, 33, 0.9); 
-    backdrop-filter: blur(10px);
+    background: rgba(16, 16, 16, 0.95); 
+    backdrop-filter: blur(15px); 
     position: fixed;
     width: 100%;
     top: 0; 
     z-index: 1000;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); 
 }
 
 .header-container { 
@@ -84,49 +85,93 @@ header {
 }
 
 .logo { display: flex; align-items: center; flex-shrink: 0; height: 100%; }
-.animated-logo { height: 50px; width: auto; object-fit: contain; animation: logoBounce 2s infinite ease-in-out; transition: transform 0.3s ease; }
+.animated-logo { 
+    height: 50px; 
+    width: auto;
+    object-fit: contain; 
+    animation: logoBounce 2s infinite ease-in-out; 
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
 .animated-logo:hover { transform: scale(1.05) translateY(-2px); animation-play-state: paused; }
 
+/* --- NAVIGATION ENHANCEMENT (Gradient Underline) --- */
 nav { flex-grow: 1; display: flex; justify-content: center; }
 nav ul { display: flex; list-style: none; }
-nav ul li { margin: 0 15px; } 
+nav ul li { margin: 0 12px; } 
 nav ul li a {
     color: var(--light);
     text-decoration: none;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1rem; 
     transition: color 0.3s ease; 
-    padding: 8px 12px;
+    padding: 8px 10px;
     border-radius: 5px;
     position: relative;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
-nav ul li a:hover { color: var(--vibrant-main); } /* Teal Hover */
 
+nav ul li a:hover { color: var(--vibrant-secondary); } 
+
+/* GRADIENT Underline for hover/active */
 nav ul li a::after {
-    content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
-    width: 0; height: 3px; background: var(--vibrant-main); border-radius: 2px; transition: width 0.3s ease-out; /* Teal Underline */
+    content: ''; 
+    position: absolute; 
+    bottom: -5px; 
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 0; 
+    height: 3px;
+    background: var(--vibrant-link-gradient); 
+    border-radius: 2px;
+    transition: width 0.3s ease-out; 
 }
-nav ul li a:hover::after { width: calc(100% - 24px); }
+
+/* Expand underline on hover */
+nav ul li a:hover::after {
+    width: calc(100% - 20px); 
+    background: var(--vibrant-link-gradient-hover); 
+}
+
+/* Permanent active link style */
+nav ul li a.active {
+    color: var(--vibrant-secondary); 
+}
+
+/* Permanent underline for active link */
 nav ul li a.active::after {
-    content: ''; position: absolute; bottom: -5px; left: 12px; right: 12px;
-    width: auto; height: 3px; background: var(--vibrant-main); border-radius: 2px; /* Teal Active Underline */
-    transition: none; transform: none;
+    content: ''; 
+    position: absolute; 
+    bottom: -5px; 
+    left: 10px;
+    right: 10px;
+    width: auto; 
+    height: 3px;
+    background: var(--vibrant-link-gradient); 
+    border-radius: 2px;
+    transition: none; 
+    transform: none; 
+    width: calc(100% - 20px); 
 }
-nav ul li a.active:hover::after { width: auto; }
 
+/* Stop hover animation on active link */
+nav ul li a.active:hover::after {
+    background: var(--vibrant-link-gradient); 
+}
 
-.header-social { display: flex; gap: 25px; flex-shrink: 0; }
+/* --- Social Icons (Keep clean) --- */
+.header-social { display: flex; gap: 20px; flex-shrink: 0; }
 .header-social a { color: var(--light); font-size: 1.1rem; transition: all 0.3s ease; }
-.header-social a:hover { color: var(--vibrant-secondary); transform: scale(1.1); } /* Neon Lime Hover */
+.header-social a:hover { color: var(--vibrant-main); transform: scale(1.1); } 
 
-
+/* Hamburger Styles */
 .nav-social-mobile { display: none; } 
 .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 10px; z-index: 1001; }
 .nav-toggle .bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: var(--light); transition: all 0.3s ease-in-out; }
 .nav-toggle.active .bar:nth-child(2) { opacity: 0; }
 .nav-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .nav-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
 
 .btn { padding: 10px 20px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; border: none; font-size: 1rem; }
 .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
@@ -144,7 +189,7 @@ section {
 }
 .section-title { text-align: center; margin-bottom: 50px; position: relative; }
 .section-title h2 { font-size: 2.5rem; display: inline-block; padding-bottom: 10px; position: relative; }
-.section-title h2::after { display: none; } /* Remove old underline */
+.section-title h2::after { display: none; } 
 
 
 /* Skewed Section Dividers */
@@ -172,10 +217,10 @@ section {
     z-index: 1;
 }
 
-/* --- HERO SECTION (Style 2: Overlapping Lineup) --- */
+/* --- HERO SECTION (Teal Block - Main Visual) --- */
 .hero-style-2 {
     padding: 0; 
-    background: var(--vibrant-main); /* Deep Cyan/Teal background */
+    background: var(--vibrant-main); 
     text-align: left;
     position: relative;
     overflow: hidden;
@@ -193,7 +238,7 @@ section {
 }
 
 .event-info-box {
-    background: var(--vibrant-secondary); /* Neon Lime for contrast */
+    background: var(--vibrant-secondary); 
     color: var(--dark);
     padding: 8px 15px;
     font-weight: 700;
@@ -230,7 +275,6 @@ section {
     background-position: center top;
     transition: all 0.5s ease;
     z-index: 1;
-    /* Add a subtle dark overlay to make text pop */
     filter: brightness(0.9);
 }
 
@@ -257,7 +301,6 @@ section {
     text-transform: uppercase;
     text-align: center;
     width: 25%;
-    /* Add subtle shadow for pop */
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4);
 }
 
@@ -286,7 +329,7 @@ section {
 }
 
 .tickets-live {
-    color: var(--vibrant-secondary); /* Neon Lime for "LIVE NOW" */
+    color: var(--vibrant-secondary); 
     font-size: 6rem;
 }
 
@@ -303,7 +346,7 @@ section {
 
 .btn-hero-2 {
     background: var(--dark); 
-    color: var(--vibrant-secondary); /* Neon Lime */
+    color: var(--vibrant-secondary); 
     padding: 15px 40px; 
     font-size: 1.2rem;
     border-radius: 50px; 
@@ -317,10 +360,10 @@ section {
     background: var(--vibrant-secondary);
     color: var(--dark);
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(204, 255, 0, 0.5); /* Neon Lime Shadow */
+    box-shadow: 0 10px 20px rgba(204, 255, 0, 0.5); 
 }
 
-/* Decorative Wave (simulating the shapes in the image) */
+/* Decorative Wave */
 .hero-style-2::before {
     content: "";
     position: absolute;
@@ -328,7 +371,7 @@ section {
     left: 0;
     width: 100%;
     height: 300px;
-    background: var(--vibrant-secondary); /* Neon Lime angled block */
+    background: var(--vibrant-secondary); 
     transform: skewY(5deg);
     z-index: 5;
 }
@@ -349,7 +392,7 @@ section {
 .intro-block {
     position: relative;
     padding: 60px 0;
-    background: var(--vibrant-main); /* Deep Cyan/Teal Block */
+    background: var(--vibrant-main); 
     text-align: center;
     z-index: 10;
 }
@@ -371,7 +414,7 @@ section {
 .tickets-block {
     position: relative;
     padding: 80px 0;
-    background: var(--primary); /* Vibrant Orange Block */
+    background: var(--primary); 
     text-align: center;
     z-index: 10;
 }
@@ -384,7 +427,7 @@ section {
 .tickets-block h3 {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--accent); /* Golden/Yellow */
+    color: var(--accent); 
     margin-bottom: 10px;
 }
 .tickets-block p {
@@ -394,7 +437,7 @@ section {
 }
 .tickets-block .btn {
     background: var(--dark);
-    color: var(--vibrant-main); /* Teal Button Text */
+    color: var(--vibrant-main); 
     font-size: 1.2rem;
     padding: 15px 40px;
     border-radius: 5px;
@@ -409,7 +452,7 @@ section {
 .artist-lineup-title {
     position: relative;
     padding: 40px 0;
-    background: linear-gradient(to right bottom, var(--accent), var(--primary)); /* Yellow to Orange gradient */
+    background: linear-gradient(to right bottom, var(--accent), var(--primary)); 
     text-align: center;
     z-index: 10;
 }
@@ -441,11 +484,11 @@ section {
 }
 .event-card:hover { 
     transform: translateY(-10px) scale(1.03); 
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--vibrant-main); /* Teal Glow on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--vibrant-main); 
 }
 .event-img { height: 200px; background-size: cover; background-position: center; }
 .event-content { padding: 20px; }
-.event-date { color: var(--vibrant-secondary); font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; } /* Neon Lime Date */
+.event-date { color: var(--vibrant-secondary); font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; } 
 .event-content h3 { font-size: 1.4rem; margin-bottom: 10px; }
 .event-content p { color: #bdbdbd; margin-bottom: 15px; }
 .btn-event { 
@@ -464,12 +507,12 @@ section {
 /* --- GALLERY SECTION (Yellow Block) --- */
 #gallery {
     padding-top: 100px; 
-    background: var(--accent); /* Yellow block for Gallery section */
+    background: var(--accent); 
     color: var(--dark);
     position: relative;
 }
 #gallery h2 {
-    color: var(--vibrant-main); /* Teal title on Yellow background */
+    color: var(--vibrant-main); 
     text-shadow: none;
 }
 .memories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
@@ -484,7 +527,7 @@ section {
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
     padding: 20px; color: white; text-align: center;
 }
-.memory-overlay h3 { font-size: 2.5rem; margin-bottom: 5px; font-weight: 800; color: var(--vibrant-secondary); } /* Neon Lime Title in Overlay */
+.memory-overlay h3 { font-size: 2.5rem; margin-bottom: 5px; font-weight: 800; color: var(--vibrant-secondary); } 
 .memory-overlay p { font-size: 1rem; color: var(--light); }
 
 /* Gallery section separator */
@@ -495,25 +538,25 @@ section {
     left: 0;
     width: 100%;
     height: 80px;
-    background: var(--vibrant-secondary); /* Neon Lime block */
+    background: var(--vibrant-secondary); 
     z-index: 2;
 }
 
 /* --- PARTNERS SECTION (Neon Lime Block) --- */
 .partners-section { 
-    background: var(--vibrant-secondary); /* Neon Lime block for Partners section */
+    background: var(--vibrant-secondary); 
     padding-top: 120px; 
     padding-bottom: 120px;
     position: relative;
     z-index: 10;
 }
 .partners-section h2 {
-    color: var(--vibrant-main); /* Teal title on Neon Lime background */
+    color: var(--vibrant-main); 
 }
 .partners-subtitle { color: var(--dark); }
 
 .partner-logo {
-    background: rgba(0, 0, 0, 0.1); /* Darker logo box on bright background */
+    background: rgba(0, 0, 0, 0.1); 
     border-radius: 15px;
     padding: 30px 20px;
     display: flex;
@@ -548,7 +591,7 @@ section {
     left: 0;
     width: 100%;
     height: 100px;
-    background: var(--vibrant-main); /* Teal block */
+    background: var(--vibrant-main); 
     transform: skewY(-3deg);
     z-index: 1;
 }
@@ -569,9 +612,9 @@ section {
 }
 .booking-event-item:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.02); }
 .event-info h3 { font-size: 1.5rem; margin-bottom: 5px; color: var(--light); }
-.event-info p { color: var(--vibrant-secondary); font-size: 1rem; } /* Neon Lime Event Location/Date */
+.event-info p { color: var(--vibrant-secondary); font-size: 1rem; } 
 .btn-book-event {
-    background: var(--vibrant-main); /* Teal button */
+    background: var(--vibrant-main); 
     color: white; padding: 12px 25px; font-size: 1rem; border-radius: 30px; border: none;
     font-weight: 700; cursor: pointer; transition: all 0.3s ease;
     display: flex; align-items: center; gap: 8px;
@@ -592,7 +635,13 @@ section {
 
 /* --- MEMBERS SECTION (Dark Block) --- */
 #members { background: var(--dark); }
-.members-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.members-grid-main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
 .member-card {
     background: rgba(255, 255, 255, 0.08); border-radius: 15px; overflow: hidden;
     transition: all 0.3s ease, box-shadow 0.3s ease;
@@ -600,7 +649,7 @@ section {
 }
 .member-card:hover {
     transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 25px var(--vibrant-main); /* Teal Glow on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 25px var(--vibrant-main); 
 }
 .member-golden-tag {
     position: absolute; top: 15px; right: -30px;
@@ -612,10 +661,11 @@ section {
 .member-header { padding: 20px; text-align: center; background: rgba(255, 255, 255, 0.1); }
 .member-img {
     width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 15px;
-    object-fit: cover; border: 3px solid var(--vibrant-main); display: block; /* Teal Border */
+    object-fit: cover; border: 3px solid var(--vibrant-main); 
+    display: block; 
 }
 .member-card h3 { font-size: 1.4rem; margin-bottom: 5px; }
-.member-card .role { color: var(--vibrant-secondary); font-weight: 600; } /* Neon Lime Role */
+.member-card .role { color: var(--vibrant-secondary); font-weight: 600; } 
 .member-details { padding: 20px; }
 .member-details p { margin-bottom: 15px; color: #bdbdbd; }
 .social-links { display: flex; justify-content: center; gap: 15px; }
@@ -637,7 +687,7 @@ section {
 
 /* --- FOOTER (Teal Block) --- */
 footer { 
-    background: var(--vibrant-main); /* Teal Footer */
+    background: var(--vibrant-main); 
     padding: 60px 0 30px; 
     color: var(--dark);
 }
@@ -655,7 +705,7 @@ footer {
 .copyright .fa-heart { color: var(--primary); }
 
 
-/* Modal Styles (kept dark for overlay effect) */
+/* Modal Styles */
 .modal {
     display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); animation: fadeIn 0.3s ease;
@@ -681,7 +731,7 @@ footer {
 }
 .modal-gallery-grid img:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(255, 87, 34, 0.3); }
 
-/* --- SCROLL ANIMATION STYLES (Kept for consistency) --- */
+/* --- SCROLL ANIMATION STYLES --- */
 .reveal {
     position: relative; opacity: 0; transform: translateY(50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -701,9 +751,12 @@ footer {
     
     nav {
         display: none; position: absolute; left: 0; top: 100%; width: 100%;
-        background: rgba(33, 33, 33, 0.97); backdrop-filter: blur(10px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3); overflow: hidden;
-        height: calc(100vh - 70px); padding: 20px 0;
+        background: rgba(16, 16, 16, 0.97); 
+        backdrop-filter: blur(15px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5); 
+        overflow: hidden;
+        height: calc(100vh - 70px); 
+        padding: 20px 0;
     }
     nav.active { display: flex; flex-direction: column; justify-content: space-between; }
     nav ul { flex-direction: column; align-items: center; margin: 0; width: 100%; }
@@ -730,7 +783,7 @@ footer {
         transition: background 0.3s ease, color 0.3s ease; 
     }
     nav ul li a.active::after { display: none; }
-    nav ul li a:hover { color: var(--dark); background: var(--vibrant-main); } /* Teal Hover */
+    nav ul li a:hover { color: var(--dark); background: var(--vibrant-main); } 
 
     .nav-social-mobile {
         display: flex; justify-content: center; gap: 30px; margin: 0 auto 30px auto;
