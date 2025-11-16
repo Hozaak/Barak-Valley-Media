@@ -7,8 +7,8 @@
     --light: #f5f5f5;
     
     /* CORE MUSICAL VIBE COLORS */
-    --vibrant-main: #00BCD4;     /* Deep Cyan/Teal */
-    --vibrant-secondary: #CCFF00; /* Neon Lime/Electric Green */
+    --vibrant-main: #00BCD4;     /* Deep Cyan/Teal (Main Accent) */
+    --vibrant-secondary: #CCFF00; /* Neon Lime/Electric Green (Highlight) */
     
     /* GRADIENTS FOR HEADER LINKS */
     --vibrant-link-gradient: linear-gradient(90deg, #CCFF00, #00BCD4); 
@@ -32,20 +32,11 @@
     50% { transform: translateY(0); }
     75% { transform: translateY(-3px); }
 }
-
-@keyframes pulse-live {
-    0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
-    }
-    70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
-    }
-    100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
-    }
+/* NEW: NEON LOGO PULSE EFFECT */
+@keyframes neon-pulse {
+    0% { box-shadow: 0 0 5px var(--vibrant-secondary); }
+    50% { box-shadow: 0 0 15px var(--vibrant-secondary), 0 0 25px var(--vibrant-main); }
+    100% { box-shadow: 0 0 5px var(--vibrant-secondary); }
 }
 
 
@@ -63,7 +54,7 @@ body {
 
 .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* --- PROFESSIONAL HEADER ENHANCEMENT --- */
+/* --- DYNAMIC HEADER STYLES --- */
 
 header {
     background: rgba(16, 16, 16, 0.95); 
@@ -72,7 +63,9 @@ header {
     width: 100%;
     top: 0; 
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); 
+    /* DYNAMIC 3D SHADOW EFFECT */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 188, 212, 0.2); 
+    transition: all 0.3s ease-in-out;
 }
 
 .header-container { 
@@ -89,9 +82,10 @@ header {
     height: 50px; 
     width: auto;
     object-fit: contain; 
-    animation: logoBounce 2s infinite ease-in-out; 
+    animation: logoBounce 2s infinite ease-in-out, neon-pulse 3s infinite alternate; /* Applied neon pulse */
     transition: transform 0.3s ease;
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+    filter: drop-shadow(0 0 5px rgba(204, 255, 0, 0.5)); /* Base Neon Lime Filter */
+    border-radius: 5px; /* Apply for pulse effect to look clean */
 }
 .animated-logo:hover { transform: scale(1.05) translateY(-2px); animation-play-state: paused; }
 
@@ -104,7 +98,7 @@ nav ul li a {
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem; 
-    transition: color 0.3s ease; 
+    transition: all 0.3s ease; /* Transition all */
     padding: 8px 10px;
     border-radius: 5px;
     position: relative;
@@ -112,58 +106,48 @@ nav ul li a {
     text-transform: uppercase;
 }
 
-nav ul li a:hover { color: var(--vibrant-secondary); } 
+nav ul li a:hover { 
+    color: var(--dark); /* Dark text on Teal/Orange hover background */
+    background: var(--vibrant-main); /* Instant background change on hover */
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.5); /* Subtle Teal glow on link hover */
+    transform: translateY(-2px);
+} 
 
-/* GRADIENT Underline for hover/active */
-nav ul li a::after {
-    content: ''; 
-    position: absolute; 
-    bottom: -5px; 
-    left: 50%; 
-    transform: translateX(-50%);
-    width: 0; 
-    height: 3px;
-    background: var(--vibrant-link-gradient); 
-    border-radius: 2px;
-    transition: width 0.3s ease-out; 
+/* Remove old underline logic for simpler, cleaner background effect */
+nav ul li a::after, nav ul li a.active::after, nav ul li a:hover::after {
+    display: none;
+    content: none;
 }
 
-/* Expand underline on hover */
-nav ul li a:hover::after {
-    width: calc(100% - 20px); 
-    background: var(--vibrant-link-gradient-hover); 
-}
-
-/* Permanent active link style */
+/* Dynamic Active Link Style */
 nav ul li a.active {
-    color: var(--vibrant-secondary); 
+    color: var(--dark); /* Dark text on Neon Lime Active */
+    background: var(--vibrant-secondary); 
+    font-weight: 800;
+    box-shadow: 0 0 15px var(--vibrant-secondary);
+    border-radius: 5px;
 }
 
-/* Permanent underline for active link */
-nav ul li a.active::after {
-    content: ''; 
-    position: absolute; 
-    bottom: -5px; 
-    left: 10px;
-    right: 10px;
-    width: auto; 
-    height: 3px;
-    background: var(--vibrant-link-gradient); 
-    border-radius: 2px;
-    transition: none; 
-    transform: none; 
-    width: calc(100% - 20px); 
+/* Ensure active state overrides hover background colors */
+nav ul li a.active:hover {
+    color: var(--dark);
+    background: var(--vibrant-secondary);
+    transform: scale(1.05);
 }
 
-/* Stop hover animation on active link */
-nav ul li a.active:hover::after {
-    background: var(--vibrant-link-gradient); 
-}
 
-/* --- Social Icons (Keep clean) --- */
+/* --- Social Icons (Teal Hover Pulse) --- */
 .header-social { display: flex; gap: 20px; flex-shrink: 0; }
-.header-social a { color: var(--light); font-size: 1.1rem; transition: all 0.3s ease; }
-.header-social a:hover { color: var(--vibrant-main); transform: scale(1.1); } 
+.header-social a { 
+    color: var(--light); 
+    font-size: 1.1rem; 
+    transition: all 0.3s ease; 
+}
+.header-social a:hover { 
+    color: var(--vibrant-main); 
+    transform: scale(1.2); 
+    filter: drop-shadow(0 0 5px var(--vibrant-main));
+} 
 
 /* Hamburger Styles */
 .nav-social-mobile { display: none; } 
@@ -782,7 +766,7 @@ footer {
         border-radius: 8px; color: var(--light); 
         transition: background 0.3s ease, color 0.3s ease; 
     }
-    nav ul li a.active::after { display: none; }
+    nav ul li a.active { color: var(--dark); background: var(--vibrant-secondary); }
     nav ul li a:hover { color: var(--dark); background: var(--vibrant-main); } 
 
     .nav-social-mobile {
